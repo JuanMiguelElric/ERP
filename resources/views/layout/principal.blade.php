@@ -31,20 +31,16 @@
             tr:hover {
                 background-color: #f5f5f5;
             }
+            .alert-danger {
+                background-color: #f8d7da;
+                border-color: #f5c6cb;
+                color: #721c24;
+            }
         </style>
     </head>
     <body>
-        <h1>Listagem de Produtos</h1>
-        <title>MyControl</title>
-        <table >
-            <?php foreach($produtos as $p):?>
-            <tr>
-                <td><?= $p->nome ?> </td> <td><a href="/produto/mostra">visualizar</a></td>
-                <td><?= $p->descricao?></td>
-                <td><?= $p->preco?></td>
-                <td><?=$p->tamanho?></td>
-            </tr>
-            <?php endforeach;?>
-        </table>
+        <div>
+            @yield('conteudo');
+        </div>
     </body>
 </html>

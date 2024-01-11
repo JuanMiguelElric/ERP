@@ -15,8 +15,8 @@ class ProdutoController extends Controller
         $produtos = DB::select("select * from estoque_laravel");
 
         
+        return view('produto/listagem')->with('produtos', $produtos);
 
-        return view('listagem', ['produtos' => $produtos]);
     }
 
     public function mostrar(){
@@ -25,6 +25,6 @@ class ProdutoController extends Controller
         if(empty($resposta)){
             return "Esse produto não existe";
         }
-        return view('detalhes')->with('p',$resposta[0]);
+        return view('produto/detalhes')->with('p',$resposta[0]);
     }
 }
