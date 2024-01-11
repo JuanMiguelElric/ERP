@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','\App\Http\Controllers\ProdutoController@funcionarios');
 Route::get('/listaprodutos', '\App\Http\Controllers\ProdutoController@lista');
+Route::get('/produto/mostra', '\App\Http\Controllers\ProdutoController@mostrar');
 Route::get('/outra',function(){
     return '<h1>Outra rota foi criada</h1>';
 });

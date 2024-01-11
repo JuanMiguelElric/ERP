@@ -19,15 +19,12 @@ class ProdutoController extends Controller
         return view('listagem', ['produtos' => $produtos]);
     }
 
-    public function Funcionarios()
-    {
-        if(DB::connection()->getPdo())
-        {
-            echo "Successfully connected to the database => ".DB::connection()->getDatabaseName();
+    public function mostrar(){
+        $id = 1;
+        $resposta = DB::select('select * from estoque_laravel where id= ?',[$id]);
+        if(empty($resposta)){
+            return "Esse produto não existe";
         }
-        else{
-            echo "error";
-        }
-
+        return view('detalhes')->with('p',$resposta[0]);
     }
 }
