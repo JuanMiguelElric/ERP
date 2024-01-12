@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produto;
 use App\Http\Controllers\Controller;
 use Request;
 use Illuminate\Support\Facades\DB;
@@ -12,21 +13,22 @@ class ProdutoController extends Controller
     {
       
 
-        $produtos = DB::select("select * from estoque_laravel");
-
-        
+        //$produtos = DB::select("select * from estoque_laravel");
+        $produtos = Produto::all();     
         return view('produto/listagem')->with('produtos', $produtos);
 
     }
 
-    public function mostrar(){
-        $id = 1;
-        $resposta = DB::select('select * from estoque_laravel where id= ?',[$id]);
-        if(empty($resposta)){
+    public function mostrar($id) {
+        $resposta = DB::table('estoque_laravel')->where('id', $id)->first();
+    
+        if (empty($resposta)) {
             return "Esse produto não existe";
         }
-        return view('produto/detalhes')->with('p',$resposta[0]);
+    
+        return view('produto.detalhes')->with('p', $resposta);
     }
+    
     public function novo(){
         return view('produto/formulario');
     }
@@ -43,5 +45,18 @@ class ProdutoController extends Controller
     
 
         return view('produto/adicionado');
+    }
+    public function Home(){
+        echo 'pagina inicial';
+    }
+    public function listaJson(){
+        //$produtos = DB::select('select * from estoque_laravel');
+        $produtos = Produto::all();
+        return response()->json($produtos);
+    }
+    public function Remover($id){
+        $produtos = Produto::find($id);
+        $produtos->delete();
+        return redirect()->action('ProdutoContoller@lista');
     }
 }
