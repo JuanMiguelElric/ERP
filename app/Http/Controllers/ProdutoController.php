@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Support\Facades\DB;
 
 class ProdutoController extends Controller
@@ -27,7 +27,21 @@ class ProdutoController extends Controller
         }
         return view('produto/detalhes')->with('p',$resposta[0]);
     }
-    public function Adicionar(){
+    public function novo(){
         return view('produto/formulario');
+    }
+    public function Adiciona(){
+        $nome = Request::Input('nome');
+        $descricao = Request::Input('descricao');
+        $preco = Request::Input('preco');
+        $tamanho = Request::Input('tamanho');
+        $concluida = true;
+
+        DB::insert('insert into estoque_laravel
+        (nome, descricao, preco, tamanho, concluida) values (?, ?, ?, ?, ?)',
+        array($nome, $descricao, $preco, $tamanho, $concluida));
+    
+
+        return view('produto/adicionado');
     }
 }

@@ -129,6 +129,7 @@
                 <div class="topicos"> <a href="">Home</a></div>
                 <div class="topicos"> <a href="">News</a></div>
                 <div class="topicos"> <a href="/listaprodutos">Listagem de produtos</a></div>
+                <div class="topicos"> <a href="/produto/novo">Novo Produto</a></div>
                 
             </nav>
         </div>
