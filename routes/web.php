@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/','\App\Http\Controllers\ProdutoController@funcionarios');
+Route::get('/produto/novo','\App\Http\Controllers\ProdutoController@Adicionar');
 Route::get('/listaprodutos', '\App\Http\Controllers\ProdutoController@lista');
 Route::get('/produto/mostra/', '\App\Http\Controllers\ProdutoController@mostrar');
 Route::get('/outra',function(){
