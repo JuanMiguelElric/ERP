@@ -13,6 +13,7 @@
                 <tr>
                     <td>{{ $p->nome }}</td>
                     <td><a href="/produto/mostra/{{ $p->id }}">Visualizar</a></td>
+                    <td><a href="{{ action('\App\Http\Controllers\ProdutoController@Remover', $p->id) }}">Remover</a></td>
                     <td>{{ $p->descricao }}</td>
                     <td>{{ $p->preco }}</td>
                     <td>{{ $p->tamanho }}</td>
