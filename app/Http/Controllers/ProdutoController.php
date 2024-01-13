@@ -6,6 +6,7 @@ use App\Models\Produto;
 use App\Http\Controllers\Controller;
 use Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class ProdutoController extends Controller
 {
@@ -55,8 +56,14 @@ class ProdutoController extends Controller
         return response()->json($produtos);
     }
     public function Remover($id)
-{
-    $produto = Produto::find($id);
+    {
+        
+        $produto = Produto::find($id);
+        
+        if (Auth::guest()) {
+            return redirect('/auth/login');
+        }
+        
 
         if (!$produto) {
             return view('produto/remove');
