@@ -9,7 +9,7 @@ Route::get('/produto/novo', '\App\Http\Controllers\ProdutoController@novo');
 Route::post('/produto/adiciona', '\App\Http\Controllers\ProdutoController@Adiciona');
 Route::get('/listaprodutos', '\App\Http\Controllers\ProdutoController@lista')->name('listaprodutos');
 Route::get('/produto/mostra/{id}', '\App\Http\Controllers\ProdutoController@mostrar');
-Route::get('home', '\App\Http\Controllers\HomeController@index');
+Route::get('/home', '\App\Http\Controllers\HomeController@index');
 
 // Rotas de Autenticação
 

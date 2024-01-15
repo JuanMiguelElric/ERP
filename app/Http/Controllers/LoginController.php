@@ -15,10 +15,11 @@ class LoginController extends Controller
             // Autenticação bem-sucedida
             return 'usuario'.
             Auth::user()->name
-             .'Usuário logado com sucesso';
+             .' logado com sucesso';
+             return view('produto/home');
         } else {
             // Autenticação falhou
-            return 'Credenciais inválidas';
+            return view('auth/login');
         }
     }
 }
